@@ -489,17 +489,17 @@ cdef class RawPy:
             if self.p.imgdata.rawdata.raw_image != NULL:
                 shape_bayer[0] = <np.npy_intp> self.p.imgdata.sizes.raw_height
                 shape_bayer[1] = <np.npy_intp> self.p.imgdata.sizes.raw_width
-                ndarr = np.PyArray_SimpleNewFromData(2, shape_bayer, np.NPY_USHORT, self.p.imgdata.rawdata.raw_image)
+                ndarr = np.PyArray_SimpleNewFromData(2, shape_bayer, np.NPY_ULONG, self.p.imgdata.rawdata.raw_image)
             elif self.p.imgdata.rawdata.color3_image != NULL:
                 shape_rgb[0] = <np.npy_intp> self.p.imgdata.sizes.raw_height
                 shape_rgb[1] = <np.npy_intp> self.p.imgdata.sizes.raw_width
                 shape_rgb[2] = <np.npy_intp> 3
-                ndarr = np.PyArray_SimpleNewFromData(3, shape_rgb, np.NPY_USHORT, self.p.imgdata.rawdata.color3_image)
+                ndarr = np.PyArray_SimpleNewFromData(3, shape_rgb, np.NPY_ULONG, self.p.imgdata.rawdata.color3_image)
             elif self.p.imgdata.rawdata.color4_image != NULL:
                 shape_rgb[0] = <np.npy_intp> self.p.imgdata.sizes.raw_height
                 shape_rgb[1] = <np.npy_intp> self.p.imgdata.sizes.raw_width
                 shape_rgb[2] = <np.npy_intp> 4
-                ndarr = np.PyArray_SimpleNewFromData(3, shape_rgb, np.NPY_USHORT, self.p.imgdata.rawdata.color4_image)
+                ndarr = np.PyArray_SimpleNewFromData(3, shape_rgb, np.NPY_ULONG, self.p.imgdata.rawdata.color4_image)
             else:
                 raise RuntimeError('unsupported raw data')
 
